@@ -1,0 +1,41 @@
+{
+  "name": "gmstacks - Daily Check-in on Stacks",
+  "short_name": "gmstacks",
+  "description": "Build your daily streak on Stacks blockchain. On-chain check-ins with real-time countdown and auto wallet connect.",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#b026ff",
+  "background_color": "#050510",
+  "orientation": "portrait-primary",
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "categories": [
+    "finance",
+    "productivity",
+    "utilities"
+  ],
+  "shortcuts": [
+    {
+      "name": "Check-in Today",
+      "short_name": "Check-in",
+      "description": "Record your daily on-chain check-in",
+      "url": "/",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96" }]
+    }
+  ]
+}
