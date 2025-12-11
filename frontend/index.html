@@ -2,9 +2,32 @@
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="https://cryptologos.cc/logos/stacks-stx-logo.svg?v=026" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>gmstacks | Daily Check-in</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>gmstacks - Daily On-Chain Check-in on Stacks | Build Your Streak</title>
+    <meta name="description" content="Daily on-chain check-in dApp on Stacks blockchain. Build your streak, track consistency, and prove your commitment on Bitcoin's layer with Clarity 4 smart contracts." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="gmstacks - Daily On-Chain Check-in" />
+    <meta property="og:description" content="Build your daily streak on Stacks blockchain" />
+    <meta property="og:url" content="https://gmstacks.vercel.app" />
+    <meta property="og:image" content="https://gmstacks.vercel.app/og.png" />
+    
+    <!-- Favicon & Branding -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="/favicon.svg" />
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/index.css" as="style" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" as="style" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Tailwind CDN with custom config -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -19,7 +42,7 @@
                 bg: '#050510'
               },
               light: {
-                bg: '#f0f4f8',
+                bg: '#f8fafc',
                 card: '#ffffff'
               }
             },
@@ -46,15 +69,19 @@
         }
       }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="/index.css" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#b026ff" />
+    
     <style>
-      body {
-        /* Default to dark mode colors, overridden by Tailwind classes in App */
-        background-color: #050510; 
-        font-family: 'Inter', sans-serif;
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-      /* Smooth theme transition for all elements */
+      /* Smooth theme transition */
       *, *::before, *::after {
         transition-property: background-color, border-color, color, fill, stroke, box-shadow;
         transition-duration: 200ms;
@@ -66,30 +93,75 @@
         width: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #0f172a; 
+        background: #0f172a;
       }
       ::-webkit-scrollbar-thumb {
-        background: #334155; 
+        background: #334155;
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #475569; 
+        background: #475569;
+      }
+      
+      /* Loading skeleton */
+      .skeleton {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+      }
+      @keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+      
+      /* Reduce motion for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.1/",
-    "react": "https://esm.sh/react@^19.2.1",
-    "lucide-react": "https://esm.sh/lucide-react@^0.560.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.1/"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
+    
+    <!-- Import Map for ESM -->
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@^19.2.1?dev",
+          "react/": "https://esm.sh/react@^19.2.1/",
+          "react-dom": "https://esm.sh/react-dom@^19.2.1?dev",
+          "react-dom/": "https://esm.sh/react-dom@^19.2.1/",
+          "lucide-react": "https://esm.sh/lucide-react@^0.560.0"
+        }
+      }
+    </script>
+  </head>
+  
   <body>
-    <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <noscript>
+      <div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 text-center">
+        <div>
+          <h1 class="text-4xl font-bold mb-4">JavaScript Required</h1>
+          <p class="text-xl">Please enable JavaScript to use gmstacks.</p>
+        </div>
+      </div>
+    </noscript>
+    
+    <div id="root"><!-- Loading --></div>
+    
+    <!-- Core App Script -->
+    <script type="module" src="/index.tsx"></script>
+    
+    <!-- Analytics (optional - uncomment if needed) -->
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    -->
+  </body>
 </html>

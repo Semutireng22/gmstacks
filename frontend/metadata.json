@@ -1,4 +1,35 @@
 {
-  "name": "gmstacks - Daily Check-in",
-  "description": "A futuristic Web3 daily check-in dashboard with neon aesthetics and glassmorphism UI."
+  "name": "gmstacks - Daily On-Chain Check-in",
+  "short_name": "gmstacks",
+  "description": "Daily check-in dApp on Stacks blockchain. Build your streak, track consistency, and prove commitment on Bitcoin's layer with Clarity 4 smart contracts.",
+  "theme_color": "#b026ff",
+  "background_color": "#050510",
+  "display": "standalone",
+  "start_url": "/",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["finance", "productivity", "crypto"],
+  "screenshots": [
+    {
+      "src": "/og.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
 }
