@@ -1,0 +1,25 @@
+{
+  "name": "gmstacks---daily-check-in",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@stacks/connect": "^8.2.3",
+    "@stacks/network": "^7.2.0",
+    "@stacks/transactions": "^7.3.0",
+    "lucide-react": "^0.560.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
+}

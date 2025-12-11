@@ -1,0 +1,18 @@
+---
+id: 0
+name: Testnet deployment
+network: testnet
+stacks-node: "https://api.testnet.hiro.so"
+bitcoin-node: "http://blockstack:blockstacksystem@bitcoind.testnet.stacks.co:18332"
+plan:
+  batches:
+    - id: 0
+      transactions:
+        - contract-publish:
+            contract-name: gmstacks
+            expected-sender: ST1E00WKNW3PY8N3MB5F83AAT0QWWHVFK21ECQMA4
+            cost: 189816787
+            path: contracts/gmstacks.clar
+            anchor-block-only: true
+            clarity-version: 4
+      epoch: "3.3"
