@@ -1,63 +1,49 @@
-# gmstacks 🟣🔷
+# gmstacks Contracts 🧪
 
-Daily on-chain check-in dApp on Stacks blockchain. Build your daily streak, track consistency, and prove your commitment on Bitcoin's layer.
+Clarity 4 smart contracts for daily check-in dApp. Deployed on testnet:
+`ST1E00WKNW3PY8N3MB5F83AAT0QWWHVFK21ECQMA4.gmstacks`
 
-[![Testnet](https://img.shields.io/badge/Testnet-Deployed-blue.svg)](https://explorer.hiro.so/address/ST1E00WKNW3PY8N3MB5F83AAT0QWWHVFK21ECQMA4.gmstacks?chain=testnet)
-[![Clarity 4](https://img.shields.io/badge/Clarity-4-purple.svg)](https://docs.stacks.co/reference/clarity)
-[![React + Stacks.js](https://img.shields.io/badge/Frontend-React%20%2B%20Stacks.js-brightgreen.svg)](https://docs.stacks.co/stacks.js)
+## Features
 
-## 🚀 Quick Start
+- `checkin()`: Daily check-in (24h cooldown)
+- Streak logic: +1 if <48h, reset if ≥48h
+- `get-my-checkin()`: User data (`tx-sender`)
+- `get-user-checkin(principal)`: Other user data
+- Clarity 4: `stacks-block-time` keyword
 
-### 1. Deploy Contracts (Local)
+## Quick Deploy
+
 ```
-cd contracts
 npm install
 clarinet deployment generate --testnet --medium-cost
 clarinet deployment apply -p deployments/default.testnet-plan.yaml
 ```
 
-### 2. Run Frontend
-```
-cd frontend
-npm install
-npm run dev
-```
+## Test
 
-### 3. Configuration
-Update `frontend/src/stacksConfig.ts` with your deployed contract ID:
 ```
-export const CONTRACT_ADDRESS = 'ST1E00WKNW3PY8N3MB5F83AAT0QWWHVFK21ECQMA4';
-export const CONTRACT_NAME = 'gmstacks';
+npm test
 ```
 
-## 📁 Project Structure
+**4/4 tests passed** ✅
+
+## Data Structure
+
 ```
-gmstacks/
-├── contracts/ # Clarity smart contracts + tests
-│ ├── gmstacks.clar # Daily check-in with streak + Clarity 4
-│ └── tests/ # Vitest integration tests
-└── frontend/ # React + Stacks.js dApp
-├── src/
-│ ├── stacksClient.ts
-│ ├── App.tsx
-│ └── components/
-└── package.json
+(map-entry principal {
+last-time: uint, ;; last stacks-block-time
+last-day: uint, ;; / 86400
+total: uint, ;; total check-ins
+streak: uint ;; current streak
+})
 ```
 
-## ✨ Features
+## Clarinet.toml
 
-- ✅ **Daily Check-in** (24h cooldown)
-- 🔥 **Streak Counter** (resets if skip >1 day)
-- 📊 **On-chain Stats** (total + streak)
-- ⏱️ **Real-time Countdown**
-- 🎨 **Dark/Light Theme**
-- 🔗 **Auto-connect** wallet after refresh
-- 🧪 **Full Test Coverage**
+```
+[contracts.gmstacks]
+path = "contracts/gmstacks.clar"
+clarity_version = 4
+```
 
-## 🛠️ Tech Stack
-
-- **Smart Contract**: Clarity 4 (`stacks-block-time`)
-- **Frontend**: React 18 + Vite + TailwindCSS
-- **Wallet**: Stacks Connect + Leather/Hiro Wallet
-- **Testing**: Vitest + Clarinet
-- **Deploy**: Vercel (frontend) + Clarinet (contracts)
+⚠️ **Keep `settings/Testnet.toml` secure** (contains mnemonic)!
